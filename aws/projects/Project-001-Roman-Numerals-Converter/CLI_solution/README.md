@@ -66,7 +66,7 @@ LATEST_AMI=$(aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest
 - Now we can run the instance with CLI command. (Do not forget to create userdata.sh under "/home/ec2-user/" folder before run this command)
 
 ```bash
-aws ec2 run-instances --image-id $LATEST_AMI --count 1 --instance-type t2.micro --key-name serdar --security-groups roman_numbers_sec_grp --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=roman_numbers}]' --user-data file:///Users/ODG/Desktop/git_dir/serdar-cw/porfolio_lesson_plan/week_6/CLI_solution/userdata.sh
+aws ec2 run-instances --image-id $LATEST_AMI --count 1 --instance-type t2.micro --key-name firstkey --security-groups roman_numbers_sec_grp --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=roman_numbers}]' --user-data C:\Users\Lenovo\Desktop\my-projects\aws\projects\Project-001-Roman-Numerals-Converter\CLI_solution\userdata.sh
 
 or
 
@@ -74,7 +74,7 @@ aws ec2 run-instances \
     --image-id $LATEST_AMI \
     --count 1 \
     --instance-type t2.micro \
-    --key-name serdar \
+    --key-name firstkey \
     --security-groups my_sec_group \
     --tag-specifications 'ResourceType=instance,Tags=[{Key=Name,Value=roman_numbers}]'
 ```
@@ -90,6 +90,7 @@ aws ec2 describe-instances --filters "Name=tag:Name,Values=roman_numbers" --quer
 
 aws ec2 describe-instances --filters "Name=tag:Name,Values=roman_numbers" --query 'Reservations[].Instances[].InstanceId[]'
 ```
+
 
 - To delete instances
 ```bash 
